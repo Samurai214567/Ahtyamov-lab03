@@ -1,0 +1,20 @@
+# Реализация через классы узлов и кучи
+class FibonacciHeap:
+    class Node:
+        def __init__(self, key):
+            self.key = key
+            self.child = None
+            self.left = self.right = self
+            self.degree = 0
+    
+    def __init__(self):
+        self.min_node = None
+        self.count = 0
+    
+    def insert(self, key):
+        # ... вставка узла
+        pass
+    
+    def extract_min(self):
+        # ... извлечение минимума
+        pass
