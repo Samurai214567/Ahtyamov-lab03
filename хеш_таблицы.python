@@ -1,0 +1,29 @@
+# Встроенный словарь
+hash_table = {}
+hash_table["key1"] = 100
+hash_table["key2"] = 200
+print(hash_table.get("key1"))  # 100
+
+# Собственная реализация
+class HashTable:
+    def __init__(self, size):
+        self.size = size
+        self.table = [[] for _ in range(size)]
+    
+    def _hash(self, key):
+        return hash(key) % self.size
+    
+    def put(self, key, value):
+        idx = self._hash(key)
+        for i, (k, v) in enumerate(self.table[idx]):
+            if k == key:
+                self.table[idx][i] = (key, value)
+                return
+        self.table[idx].append((key, value))
+    
+    def get(self, key):
+        idx = self._hash(key)
+        for k, v in self.table[idx]:
+            if k == key:
+                return v
+        raise KeyError(key)
